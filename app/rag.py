@@ -55,10 +55,15 @@ Question: {question}
 async def answer_question(client_id: str, question: str, top_k: int = 4) -> Tuple[str, List[str]]:
     print("TRYING TO ANSWER QUESTION")
     retriever = get_retriever(client_id, top_k)
+    client_upload_path_o = os.path.join(
+        'C:/Users/regle/OneDrive/Documents2/dev/chat/data/uploads', client_id, '') 
+    client_upload_path = r'C:\Users\regle\OneDrive\Documents2\dev\chat\data\uploads\whatever' + '\\'
+    print("client_upload_path_o", client_upload_path_o)
     docs = retriever.get_relevant_documents(question)
     print(docs)
     context = "\n\n".join(d.page_content for d in docs)
     sources = list({(d.metadata.get('source') or d.metadata.get('file_path') or 'unknown') for d in docs})
+    sources = [s.replace(client_upload_path, '').replace(client_upload_path_o,'')  for s in sources]
 
     llm = LLMClient()
     prompt = PROMPT.format_messages(context=context, question=question)

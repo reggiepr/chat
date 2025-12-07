@@ -21,7 +21,7 @@ app = FastAPI(title="RAGBot API", version="0.1.0")
 # CORS (adjust for your frontend domains)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"],  # lock down in production
+    allow_origins=["http://127.0.0.1:5500","https://reginald.ledainsolutions.com", "http://reginald.ledainsolutions.com"],  # lock down in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

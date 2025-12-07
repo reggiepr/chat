@@ -1,10 +1,12 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 fastapi==0.115.0
 uvicorn[standard]==0.30.6
 python-multipart==0.0.9
 pydantic==2.9.2
 python-dotenv==1.0.1
 
-# LangChain + vector store + parsing
+# LangChain stack
 langchain==0.3.1
 langchain-community==0.3.1
 chromadb==0.5.5
@@ -19,4 +21,6 @@ httpx==0.27.2
 
 # Optional local embeddings
 sentence-transformers==3.0.1
-torch==2.3.1
+torch>=2.5,<2.6
+gunicorn==23.0.0
+
